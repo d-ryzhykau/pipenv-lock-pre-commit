@@ -2,5 +2,5 @@
     name: pipenv-lock
     description: Run `pipenv lock -r` to freeze current dependency versions.
     entry: ./lock.sh
-    language: python
+    language: script
     files: ^Pipfile(\.lock)?$
