@@ -1,6 +1,6 @@
 -   id: pipenv-lock
     name: pipenv-lock
-    description: Run `pipenv lock -r` to freeze current dependency versions.
-    entry: ./lock.sh
-    language: script
+    description: Generate requirements.txt and requirements-dev.txt for Pipenv environment.
+    entry: pipenv-lock-pre-commit-hook
+    language: python
     files: ^Pipfile(\.lock)?$
