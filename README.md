@@ -5,15 +5,29 @@ using `pipenv requirements`.
 
 ## Installation
 
+Install [Pipenv](https://pipenv.pypa.io/) and [pre-commit](https://pre-commit.com):
 ```shell
-pip install pre-commit pipenv
+pip install pipenv pre-commit
 ```
 
-Add following to your `.pre-commit-config.yaml`:
-
+Add a pre-commit configuration:
 ```yaml
 -   repo: https://github.com/d-ryzhikov/pipenv-lock-pre-commit
-    rev: 0.2.0
+    rev: 0.3.0
     hooks:
-    - id: pipenv-lock
+    - id: pipenv-requirements
+    - id: pipenv-requirements-dev  # optional
+```
+
+To pass additional parameters to Pipenv, overwrite `args` property of the hook.
+**Note**: overwriting `args` property removes default arguments passed to the hook script.
+```yaml
+-   repo: https://github.com/d-ryzhikov/pipenv-lock-pre-commit
+    rev: 0.3.0
+    hooks:
+    - id: pipenv-requirements
+      args: [--hash]
+    - id: pipenv-requirements-dev
+      # pass new --hash param and preserve default --requirements-file option
+      args: [--hash, --requirements-file=requirements-dev.txt]
 ```

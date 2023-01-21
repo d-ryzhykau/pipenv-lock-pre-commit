@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
 import subprocess
+from argparse import ArgumentParser, FileType
 
 
 def main():
-    with open("requirements.txt", "w") as requirements_file:
-        subprocess.run(["pipenv", "requirements"], stdout=requirements_file)
-    with open("requirements-dev.txt", "w") as requirements_dev_file:
-        subprocess.run(
-            ["pipenv", "requirements", "--dev-only"], stdout=requirements_dev_file
-        )
+    parser = ArgumentParser()
+    parser.add_argument(
+        "--requirements-file",
+        type=FileType("w"),
+        default="requirements.txt",
+    )
+    # fetch list of changed files passed by pre-commit
+    parser.add_argument("changed_pipfiles", nargs="+")
+    args, extra_args = parser.parse_known_args()
+    subprocess.run(["pipenv", "requirements", *extra_args], stdout=args.requirements_file)
 
 
 if __name__ == "__main__":

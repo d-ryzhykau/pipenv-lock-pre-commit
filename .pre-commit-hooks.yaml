@@ -1,6 +1,14 @@
--   id: pipenv-lock
-    name: pipenv-lock
-    description: Generate requirements.txt and requirements-dev.txt for Pipenv environment.
+-   id: pipenv-requirements
+    name: pipenv-requirements
+    description: Generate a requirements.txt for Pipenv environment.
     entry: pipenv-lock-pre-commit-hook
+    language: python
+    files: ^Pipfile(\.lock)?$
+    args: [--requirements-file=requirements.txt]
+-   id: pipenv-requirements-dev
+    name: pipenv-requirements-dev
+    description: Generate a requirements-dev.txt for Pipenv environment.
+    entry: pipenv-lock-pre-commit-hook --dev-only
+    args: [--requirements-file=requirements-dev.txt]
     language: python
     files: ^Pipfile(\.lock)?$
