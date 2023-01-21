@@ -15,8 +15,9 @@ Add a pre-commit configuration:
 -   repo: https://github.com/d-ryzhikov/pipenv-lock-pre-commit
     rev: 0.3.0
     hooks:
-    - id: pipenv-requirements
-    - id: pipenv-requirements-dev  # optional
+    - id: pipenv-requirements      # generate a requirements.txt
+    - id: pipenv-requirements-dev  # generate a requirements-dev.txt
+    - id: pipenv-verify            # verify the hash in Pipfile.lock
 ```
 
 To pass additional parameters to Pipenv, overwrite `args` property of the hook.

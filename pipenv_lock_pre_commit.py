@@ -3,7 +3,7 @@ import subprocess
 from argparse import ArgumentParser, FileType
 
 
-def main():
+def requirements():
     parser = ArgumentParser()
     parser.add_argument(
         "--requirements-file",
@@ -16,5 +16,5 @@ def main():
     subprocess.run(["pipenv", "requirements", *extra_args], stdout=args.requirements_file)
 
 
-if __name__ == "__main__":
-    main()
+def verify():
+    subprocess.run(["pipenv", "verify"])
