@@ -12,7 +12,7 @@ pip install pipenv pre-commit
 
 Add a pre-commit configuration:
 ```yaml
--   repo: https://github.com/d-ryzhikov/pipenv-lock-pre-commit
+-   repo: https://github.com/d-ryzhykau/pipenv-lock-pre-commit
     rev: 0.3.0
     hooks:
     - id: pipenv-requirements      # generate a requirements.txt
@@ -23,7 +23,7 @@ Add a pre-commit configuration:
 To pass additional parameters to Pipenv, overwrite `args` property of the hook.
 **Note**: overwriting `args` property removes default arguments passed to the hook script.
 ```yaml
--   repo: https://github.com/d-ryzhikov/pipenv-lock-pre-commit
+-   repo: https://github.com/d-ryzhykau/pipenv-lock-pre-commit
     rev: 0.3.0
     hooks:
     - id: pipenv-requirements
