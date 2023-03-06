@@ -3,7 +3,7 @@
     description: Generate a requirements.txt for Pipenv environment.
     entry: pipenv-lock-pre-commit-requirements
     language: python
-    files: ^Pipfile(\.lock)?$
+    files: ^(.+/)?Pipfile(\.lock)?$
     args: [--requirements-file=requirements.txt]
 -   id: pipenv-requirements-dev
     name: pipenv-requirements-dev
@@ -11,10 +11,10 @@
     entry: pipenv-lock-pre-commit-requirements --dev-only
     args: [--requirements-file=requirements-dev.txt]
     language: python
-    files: ^Pipfile(\.lock)?$
+    files: ^(.+/)?Pipfile(\.lock)?$
 -   id: pipenv-verify
     name: pipenv-verify
     description: Verify the hash in Pipfile.lock is up-to-date.
     entry: pipenv-lock-pre-commit-verify
     language: python
-    files: ^Pipfile(\.lock)?$
+    files: ^(.+/)?Pipfile(\.lock)?$
