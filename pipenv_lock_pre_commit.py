@@ -63,3 +63,23 @@ def verify():
         out = subprocess.run(["pipenv", "verify"], cwd=root_dir, env=env)
         return_code |= out.returncode
     sys.exit(return_code)
+
+
+def lock():
+    parser = ArgumentParser(prog="pipenv_lock_pre_commit:lock")
+    # fetch list of changed files passed by pre-commit
+    parser.add_argument("changed_pipfiles", nargs="+")
+    args, extra_args = parser.parse_known_args()
+
+    env = _get_env()
+    return_code = 0
+    for root_dir in _get_root_dirs(args.changed_pipfiles):
+        print(
+            "{root_dir}: pipenv lock {extra_args}".format(
+                    root_dir=root_dir,
+                    extra_args=" ".join(extra_args),
+            )
+        )
+        out = subprocess.run(["pipenv", "lock"], cwd=root_dir, env=env)
+        return_code |= out.returncode
+    sys.exit(return_code)

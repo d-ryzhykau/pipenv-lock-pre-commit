@@ -1,7 +1,6 @@
-# Pipenv lock pre-commit hook
+# Pipenv lock pre-commit hooks
 
-Freeze your dependency versions to `requirements{-dev,}.txt`
-using `pipenv requirements`.
+Freeze Pipenv dependency versions with pre-commit hooks.
 
 ## Installation
 
@@ -15,9 +14,10 @@ Add a pre-commit configuration:
 -   repo: https://github.com/d-ryzhykau/pipenv-lock-pre-commit
     rev: 0.4.1
     hooks:
+    - id: pipenv-lock              # generate a Pipfile.lock
+    - id: pipenv-verify            # verify the hash in Pipfile.lock
     - id: pipenv-requirements      # generate a requirements.txt
     - id: pipenv-requirements-dev  # generate a requirements-dev.txt
-    - id: pipenv-verify            # verify the hash in Pipfile.lock
 ```
 
 To pass additional parameters to Pipenv commands, overwrite `args` property of the hook.

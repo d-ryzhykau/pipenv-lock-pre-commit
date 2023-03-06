@@ -18,3 +18,9 @@
     entry: pipenv-lock-pre-commit-verify
     language: python
     files: ^(.+/)?Pipfile(\.lock)?$
+-   id: pipenv-lock
+    name: pipenv-lock
+    description: Generates Pipfile.lock.
+    entry: pipenv-lock-pre-commit-lock
+    language: python
+    files: ^(.+/)?Pipfile(\.lock)?$

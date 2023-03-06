@@ -13,6 +13,7 @@ setup(
                 "pipenv_lock_pre_commit:requirements"
             ),
             "pipenv-lock-pre-commit-verify = pipenv_lock_pre_commit:verify",
+            "pipenv-lock-pre-commit-lock = pipenv_lock_pre_commit:lock",
         ]
     },
 )
